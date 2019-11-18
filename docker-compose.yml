@@ -1,11 +1,12 @@
 version: '3'
 services:
-  dboorder:
-    image: gotest
+  gotest:
+    image: dedewahyuh/gotest
     container_name: gotest
     volumes:
       - ./app:/var/dbo
     ports:
       - "80:8888"
-    command: /go/bin/dbo_order 
+    command: /go/bin/gotest
     restart: always
+
