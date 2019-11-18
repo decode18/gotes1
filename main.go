@@ -1,18 +1,15 @@
 package main
 
-import "fmt"
+import (
+    "fmt"
+    "net/http"
+)
 
 func main() {
-	var firstName string = "john"
+    http.HandleFunc("/", HelloServer)
+    http.ListenAndServe(":8888", nil)
+}
 
-	//var lastName string
-	lastName := "wickss"
-
-	fmt.Printf("hallo %s %s!\n", firstName, lastName)
-	fmt.Println("haloo", firstName, lastName + "!")
-
-	name :=  new(string)
-
-	fmt.Println(name)
-	fmt.Println(*name)
+func HelloServer(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, "Hello, %s!", r.URL.Path[1:])
 }
